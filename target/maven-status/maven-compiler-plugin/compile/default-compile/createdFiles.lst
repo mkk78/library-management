@@ -1,0 +1,8 @@
+com\mitrais\librarymanagement\business\LibraryService.class
+com\mitrais\librarymanagement\model\Book.class
+com\mitrais\librarymanagement\LibraryManagementApplication.class
+com\mitrais\librarymanagement\controller\LibraryController.class
+com\mitrais\librarymanagement\controller\BookController.class
+com\mitrais\librarymanagement\model\Shelf.class
+com\mitrais\librarymanagement\repository\BookRepository.class
+com\mitrais\librarymanagement\repository\ShelfRepository.class

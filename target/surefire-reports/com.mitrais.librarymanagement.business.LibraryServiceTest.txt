@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.mitrais.librarymanagement.business.LibraryServiceTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.495 s <<< FAILURE! - in com.mitrais.librarymanagement.business.LibraryServiceTest
+retrieveAllBook_basic(com.mitrais.librarymanagement.business.LibraryServiceTest)  Time elapsed: 0.015 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.mitrais.librarymanagement.business.LibraryServiceTest.retrieveAllBook_basic(LibraryServiceTest.java:47)
+
