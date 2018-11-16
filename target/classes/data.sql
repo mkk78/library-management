@@ -2,7 +2,7 @@ insert into book(id, isbn, title, author, status) values(11, 'abcd', 'Harry Pott
 
 insert into book(id, isbn, title, author, status) values(12, 'aaaa', 'One Piece', 'Eiichiro Oda', false);
 
-insert into book(id, isbn, title, author, status) values(13, 'bbbb', 'Naruto', 'Masashi Kishimoto', false);
+insert into book(id, isbn, title, author, status) values(13, 'bbbb', 'Naruto', 'Masashi Kishimoto', true);
 
 insert into shelf(shelf_id, current_capacity, max_capacity) values(1, 0, 2);
 

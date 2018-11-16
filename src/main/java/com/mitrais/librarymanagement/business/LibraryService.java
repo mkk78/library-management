@@ -42,8 +42,8 @@ public class LibraryService {
 	}
 	
 	public Shelf addBookToShelf(int b, int s) {
-		Book book = bookRepo.getOne(b);
-		Shelf shelf = shelfRepo.getOne(s);
+		Book book = bookRepo.findById(b).get();
+		Shelf shelf = shelfRepo.findById(s).get();
 		
 		if (shelf.getCurrent_capacity() < shelf.getMax_capacity()) {
 			if (shelf.getBooks()==null) shelf.setBooks(new ArrayList<>());
@@ -62,8 +62,8 @@ public class LibraryService {
 	}
 	
 	public Shelf removeBookFromShelf(int b, int s) {
-		Book book = bookRepo.getOne(b);
-		Shelf shelf = shelfRepo.getOne(s);
+		Book book = bookRepo.findById(b).get();
+		Shelf shelf = shelfRepo.findById(s).get();
 
 		if (shelf.getBooks()==null) shelf.setBooks(new ArrayList<>());
 		if (shelf.getBooks().stream().filter(Idb -> Idb.getId() == b).findFirst().isPresent()) {

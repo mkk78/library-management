@@ -36,7 +36,7 @@ public class LibraryServiceTest {
 				new Book(2, "4321", "Naruto", "Masashi Kishimoto", false)));
 
 		List<Book> books = libraryService.retrieveBookByStatus(false);
-		books.stream().forEach(s -> assertEquals(false, s.isStatus()));
+		books.stream().forEach(s -> assertFalse(s.isStatus()));
 
 	}
 	
@@ -47,7 +47,7 @@ public class LibraryServiceTest {
 		
 		List<Book> books = libraryService.retrieveBookByStatusTitle(false, "Harry Potter");
 		
-		books.stream().forEach(s -> assertEquals(false, s.isStatus()));
+		books.stream().forEach(s -> assertFalse(s.isStatus()));
 		books.stream().forEach(s -> assertEquals("Harry Potter", s.getTitle()));
 	}
 
@@ -60,13 +60,13 @@ public class LibraryServiceTest {
 	
 	@Test
 	public void addBookIntoShelf() {
-		when(bookRepo.getOne(anyInt())).thenReturn(new Book(1, "12345", "Harry Potter", "J.K. Rowling", false));
+		when(bookRepo.findById(anyInt())).thenReturn(Optional.of(new Book(1, "12345", "Harry Potter", "J.K. Rowling", false)));
 		
 		List<Book> lBooks = new ArrayList<>();
 		lBooks.add(new Book(5, "55555", "One Piece", "Eiichiro Oda", true));
 		lBooks.add(new Book(6, "88888", "Naruto", "Masashi Kishimoto", true));
 		
-		when(shelfRepo.getOne(anyInt())).thenReturn(new Shelf(1, 3, 2, lBooks));
+		when(shelfRepo.findById(anyInt())).thenReturn(Optional.of(new Shelf(1, 3, 2, lBooks)));
 		
 		Shelf s = libraryService.addBookToShelf(11, 1);
 		
@@ -79,14 +79,14 @@ public class LibraryServiceTest {
 	@Test
 	public void removeBookFromShelf() {
 		
-		when(bookRepo.getOne(anyInt())).thenReturn(new Book(1, "12345", "Harry Potter", "J.K. Rowling", true));
+		when(bookRepo.findById(anyInt())).thenReturn(Optional.of(new Book(1, "12345", "Harry Potter", "J.K. Rowling", true)));
 		
 		List<Book> lBooks = new ArrayList<>();
 		lBooks.add(new Book(5, "55555", "One Piece", "Eiichiro Oda", true));
 		lBooks.add(new Book(6, "88888", "Naruto", "Masashi Kishimoto", true));
 		lBooks.add(new Book(1, "12345", "Harry Potter", "J.K. Rowling", true));
 		
-		when(shelfRepo.getOne(anyInt())).thenReturn(new Shelf(1, 3, 3, lBooks));
+		when(shelfRepo.findById(anyInt())).thenReturn(Optional.of(new Shelf(1, 3, 3, lBooks)));
 		
 		Shelf s = libraryService.removeBookFromShelf(1, 1);
 		
