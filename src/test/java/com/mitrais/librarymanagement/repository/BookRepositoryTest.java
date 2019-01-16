@@ -36,6 +36,5 @@ public class BookRepositoryTest {
 		List<Book> books = bookRepo.findByStatusTitle(false, "Harry Potter");
 		books.stream().forEach(s -> assertFalse(s.isStatus()));
 		books.stream().forEach(s-> assertEquals("Harry Potter", s.getTitle()));
-		
 	}
 }

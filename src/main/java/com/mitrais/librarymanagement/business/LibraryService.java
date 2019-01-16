@@ -12,7 +12,7 @@ import com.mitrais.librarymanagement.repository.BookRepository;
 import com.mitrais.librarymanagement.repository.ShelfRepository;
 
 @Service
-public class LibraryService {
+public class LibraryService implements ILibraryService{
 	
 	@Autowired
 	private BookRepository bookRepo;

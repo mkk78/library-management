@@ -19,14 +19,14 @@ public class LibraryManagementApplicationTests {
 	public void getBooksStatus() throws JSONException {
 		String response = restTemplate.getForObject("/get-book-status?status=false", String.class);
 		
-		JSONAssert.assertEquals("[{}]", response, false);
+		JSONAssert.assertEquals("[{status=false}]", response, false);
 	}
 	
 	@Test
 	public void getBooksStatusTitle() throws JSONException {
 		String response = restTemplate.getForObject("/get-book-status-title?status=true&title=Naruto", String.class);
 		
-		JSONAssert.assertEquals("[{}]", response, false);
+		JSONAssert.assertEquals("[{status=true}]", response, false);
 	}
 	
 	@Test
