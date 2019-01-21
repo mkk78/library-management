@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.mitrais.librarymanagement.model.Book;
 
 public interface BookRepository extends JpaRepository<Book, Integer> {
-	@Query("SELECT t FROM Book t WHERE t.status = ?1")
+	
 	public List<Book> findByStatus(boolean status);
 	
 	@Query("SELECT t FROM Book t WHERE t.status = ?1 and t.title = ?2")

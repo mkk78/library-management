@@ -13,9 +13,16 @@ import com.mitrais.librarymanagement.model.Book;
 @RestController
 public class BookController {
 	
-	@Autowired
 	private LibraryService libraryService;
 	
+	@Autowired
+	public BookController(LibraryService libraryService) {
+		this.libraryService = libraryService;
+	}
+
+	/*
+	 * @return dummy book for testing
+	 */
 	@GetMapping("/dummy-book")
     public Book dummyBook(){
         return new Book(1, "aaaaa", "harry Potter", "J.K. Rowling", false);
@@ -26,11 +33,17 @@ public class BookController {
 		return libraryService.retrieveAllBook();
 	}
 	
+	/*
+	 * get books by status
+	 */
 	@GetMapping("/get-book-status")
 	public List<Book> bookByStatus(@RequestParam("status") boolean status) {
 		return libraryService.retrieveBookByStatus(status);
 	}
 	
+	/*
+	 * get books by status and title
+	 */
 	@GetMapping("/get-book-status-title")
 	public List<Book> bookByStatusTitle(@RequestParam("status") boolean status, @RequestParam("title") String title) {
 		return libraryService.retrieveBookByStatusTitle(status, title);

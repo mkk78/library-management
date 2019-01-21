@@ -2,7 +2,9 @@ package com.mitrais.librarymanagement.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+/*
+ * This class is represents book information
+ */
 @Entity
 public class Book {
 	@Id
@@ -10,6 +12,9 @@ public class Book {
 	private String isbn;
 	private String title;
 	private String author;
+	/*
+	 * used to indicate if book already in the shelf or not
+	 */
 	private boolean status;
 	
 	public Book() {

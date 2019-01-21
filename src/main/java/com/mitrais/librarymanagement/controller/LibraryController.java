@@ -12,19 +12,32 @@ import com.mitrais.librarymanagement.model.Shelf;
 @RestController
 public class LibraryController {
 
-	@Autowired
 	private LibraryService libraryService;
+
+	@Autowired
+	public LibraryController(LibraryService libraryService) {
+		this.libraryService = libraryService;
+	}
 	
+	/*
+	 * get shelf by shelf id
+	 */
 	@GetMapping("get-shelf")
 	public Shelf getShelfById(@RequestParam("id") int id) {
 		return libraryService.retrieveShelfById(id);
 	}
 	
+	/*
+	 * add book int shelf by book id and shelf id
+	 */
 	@GetMapping("add-book")
 	public Shelf addBookToShelf(@RequestParam("bookid") int bookId, @RequestParam("shelfid") int shelfId) {
 		return libraryService.addBookToShelf(bookId, shelfId);		
 	}
 	
+	/*
+	 * remove book from shelf by book id and shelf id
+	 */
 	@GetMapping("remove-book")
 	public Shelf removeBookFromShelf(@RequestParam("bookid") int bookId, @RequestParam("shelfid") int shelfId) {
 		return libraryService.removeBookFromShelf(bookId, shelfId);		

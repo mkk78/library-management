@@ -5,14 +5,25 @@ import java.util.List;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+/*
+ * This class represents shelf information that books can be added
+ */
 @Entity
 public class Shelf {
 
 	@Id
 	private int shelfId;
+	/*
+	 * maximum capacity of books
+	 */
 	private int maxCapacity;
+	/*
+	 * current capacity of books
+	 */
 	private int currentCapacity;
+	/*
+	 * collection of books that added into shelf
+	 */
 	@ElementCollection
 	private List<Book> books;
 

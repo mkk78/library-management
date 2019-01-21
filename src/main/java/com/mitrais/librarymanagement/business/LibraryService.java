@@ -14,12 +14,15 @@ import com.mitrais.librarymanagement.repository.ShelfRepository;
 @Service
 public class LibraryService implements ILibraryService{
 	
-	@Autowired
 	private BookRepository bookRepo;
-	
-	@Autowired
 	private ShelfRepository shelfRepo;
 	
+	@Autowired
+	public LibraryService(BookRepository bookRepo, ShelfRepository shelfRepo) {
+		this.bookRepo = bookRepo;
+		this.shelfRepo = shelfRepo;
+	}
+
 	public List<Book> retrieveAllBook() {
 		
 		return bookRepo.findAll();
@@ -41,6 +44,19 @@ public class LibraryService implements ILibraryService{
 		return shelfRepo.findById(id).get();
 	}
 	
+	/*
+	 * This method add book to shelf
+	 * @param b book id
+	 * @param s shelf id
+	 * find book by book id
+	 * find shelf by shelf id
+	 * if shelf current capacity is not more than or equals max capacity
+	 * then it can be processed
+	 * if books in shelf is null then set books new array list
+	 * if book is not in shelf then it can be processed
+	 * save book and shelf
+	 * @return shelf whether added the book or not
+	 */
 	public Shelf addBookToShelf(int b, int s) {
 		Book book = bookRepo.findById(b).get();
 		Shelf shelf = shelfRepo.findById(s).get();
@@ -61,6 +77,15 @@ public class LibraryService implements ILibraryService{
 		return shelf;
 	}
 	
+	/*
+	 * This method remove book from shelf
+	 * @param b book id
+	 * @param s shelf id
+	 * find book and shelf by its id
+	 * if book is in shelf then it can be processed
+	 * save book and shelf
+	 * @return shelf whether removed the book or not
+	 */
 	public Shelf removeBookFromShelf(int b, int s) {
 		Book book = bookRepo.findById(b).get();
 		Shelf shelf = shelfRepo.findById(s).get();
