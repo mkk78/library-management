@@ -55,7 +55,7 @@ public class LibraryServiceTest {
 	public void retrieveShelfById() {
 		when(shelfRepo.findById(anyInt())).thenReturn(Optional.of(new Shelf(1, 1, 0, null)));
 		Shelf shelf = libraryService.retrieveShelfById(1);
-		assertEquals(1, shelf.getShelf_id());
+		assertEquals(1, shelf.getShelfId());
 	}
 	
 	@Test
@@ -70,7 +70,7 @@ public class LibraryServiceTest {
 		
 		Shelf s = libraryService.addBookToShelf(11, 1);
 		
-		assertEquals(3, s.getCurrent_capacity());
+		assertEquals(3, s.getCurrentCapacity());
 		assertEquals(3, s.getBooks().size());
 		assertEquals(5, s.getBooks().get(0).getId());
 		assertEquals(1, s.getBooks().get(s.getBooks().size()-1).getId());
@@ -90,7 +90,7 @@ public class LibraryServiceTest {
 		
 		Shelf s = libraryService.removeBookFromShelf(1, 1);
 		
-		assertEquals(2, s.getCurrent_capacity());
+		assertEquals(2, s.getCurrentCapacity());
 		assertEquals(2, s.getBooks().size());
 		
 	}

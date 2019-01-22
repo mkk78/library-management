@@ -3,6 +3,7 @@ package com.mitrais.librarymanagement.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,11 +24,13 @@ public class BookController {
 	/*
 	 * @return dummy book for testing
 	 */
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/dummy-book")
     public Book dummyBook(){
         return new Book(1, "aaaaa", "harry Potter", "J.K. Rowling", false);
     }
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/get-all-book")
 	public List<Book>  allBook() {
 		return libraryService.retrieveAllBook();

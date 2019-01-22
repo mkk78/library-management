@@ -30,48 +30,47 @@ public class Shelf {
 	public Shelf() {
 		
 	}
-	
-	
-	public Shelf(int shelf_id, int max_capacity, int current_capacity, List<Book> books) {
+
+	public Shelf(int shelfId, int maxCapacity, int currentCapacity, List<Book> books) {
 		super();
-		this.shelfId = shelf_id;
-		this.maxCapacity = max_capacity;
-		this.currentCapacity = current_capacity;
+		this.shelfId = shelfId;
+		this.maxCapacity = maxCapacity;
+		this.currentCapacity = currentCapacity;
 		this.books = books;
 	}
 
-	public int getShelf_id() {
+	public int getShelfId() {
 		return shelfId;
 	}
 
-	public void setShelf_id(int shelf_id) {
-		this.shelfId = shelf_id;
+	public void setShelfId(int shelfId) {
+		this.shelfId = shelfId;
 	}
 
-	public int getMax_capacity() {
+	public int getMaxCapacity() {
 		return maxCapacity;
 	}
 
-	public void setMax_capacity(int max_capacity) {
-		this.maxCapacity = max_capacity;
+	public void setMaxCapacity(int maxCapacity) {
+		this.maxCapacity = maxCapacity;
 	}
 
-	public int getCurrent_capacity() {
+	public int getCurrentCapacity() {
 		return currentCapacity;
 	}
 
-	public void setCurrent_capacity(int current_capacity) {
-		this.currentCapacity = current_capacity;
+	public void setCurrentCapacity(int currentCapacity) {
+		this.currentCapacity = currentCapacity;
 	}
-
 
 	public List<Book> getBooks() {
 		return books;
 	}
 
-
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
+	
+	
 	
 }

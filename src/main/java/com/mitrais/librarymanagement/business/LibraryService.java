@@ -61,13 +61,13 @@ public class LibraryService implements ILibraryService{
 		Book book = bookRepo.findById(b).get();
 		Shelf shelf = shelfRepo.findById(s).get();
 		
-		if (shelf.getCurrent_capacity() < shelf.getMax_capacity()) {
+		if (shelf.getCurrentCapacity() < shelf.getMaxCapacity()) {
 			if (shelf.getBooks()==null) shelf.setBooks(new ArrayList<>());
 			if (!shelf.getBooks().stream().filter(Idb -> Idb.getId() == b).findFirst().isPresent()) {
 				
 				book.setStatus(true);
 				shelf.getBooks().add(book);
-				shelf.setCurrent_capacity(shelf.getBooks().size());
+				shelf.setCurrentCapacity(shelf.getBooks().size());
 				
 				bookRepo.save(book);
 				shelfRepo.save(shelf);
@@ -95,7 +95,7 @@ public class LibraryService implements ILibraryService{
 			
 			book.setStatus(false);
 			shelf.getBooks().removeIf(id -> id.getId() == b);
-			shelf.setCurrent_capacity(shelf.getBooks().size());
+			shelf.setCurrentCapacity(shelf.getBooks().size());
 			
 			bookRepo.save(book);
 			shelfRepo.save(shelf);
