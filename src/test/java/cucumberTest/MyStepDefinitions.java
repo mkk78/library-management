@@ -47,15 +47,12 @@ public class MyStepDefinitions extends CucumberRoot{
 
 	@And("^user get dummy data$")
     public void user_get_dummy_data() throws Throwable {
-    	//assertThat("data is incorrect : " + response.getBody() + " xxx " + data, response.getBody(), Matchers.is(data));
     	JSONAssert.assertEquals("{\"id\":1,\"isbn\":\"aaaaa\",\"title\":\"harry Potter\",\"author\":\"J.K. Rowling\",\"status\":false}", response.getBody(), false);
     }
 	
 	@And("^user get all book$")
     public void user_get_all_book() throws Throwable {
-    	//System.out.println(response.getBody());
     	JSONArray jsonArray = new JSONArray(response.getBody());
-    	//System.out.println(jsonArray.length());
     	assertThat("array length is incorrect : " + response.getBody(), jsonArray.length(), Matchers.is(bookRepo.findAll().size()));
      }
 	
@@ -65,15 +62,20 @@ public class MyStepDefinitions extends CucumberRoot{
         System.out.println(response.getBody());
         JSONObject jsonObject = new JSONObject(response.getBody());
         
+        // Parsing shelf's books json into Books list
         List<Book> books = new ArrayList<Book>();
         JSONArray jsonArray = jsonObject.getJSONArray("books");
         for (int i = 0; i < jsonArray.length(); i++) {
         	JSONObject object = new JSONObject(jsonArray.get(i).toString());
         	books.add(new Book(object.getInt("id"), object.getString("isbn"), object.getString("title"), object.getString("author"), object.getBoolean("status")));
         }
-        Shelf myShelf = new Shelf(jsonObject.getInt("shelf_id"), jsonObject.getInt("max_capacity"), jsonObject.getInt("current_capacity"), books);
+        // Parsing shelf json into Shelf object
+        Shelf myShelf = new Shelf(jsonObject.getInt("shelfId"), jsonObject.getInt("maxCapacity"), jsonObject.getInt("currentCapacity"), books);
         
-        assertThat("book is not in shelf: " + response.getBody(), myShelf.getBooks().get(0).getId(), Matchers.is(Integer.parseInt(bookId)));
+        // Compare last book id from shelf with inputed book id
+        if (!myShelf.getBooks().isEmpty()) {
+        	assertThat("book is not in shelf: " + response.getBody(), myShelf.getBooks().get(myShelf.getBooks().size()-1).getId(), Matchers.is(Integer.parseInt(bookId)));
+        }
     }
 	
 
